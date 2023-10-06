@@ -26,6 +26,6 @@ while True:
     draw.fps(clock)
     player.movement()
 
-    pygame.draw.circle(sc, GREEN, player.pos, RADIUS)
+    #pygame.draw.circle(sc, GREEN, player.pos, RADIUS)
 
     pygame.display.flip()

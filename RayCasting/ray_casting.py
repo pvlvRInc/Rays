@@ -58,7 +58,11 @@ def ray_cast_brez(sc, pl_pos, pl_angle):
         depth = depth_v if depth_v < depth_h else depth_h
         x = xo + depth * cos_a
         y = yo + depth * sin_a
-        pygame.draw.line(sc, WHITE, pl_pos, (x, y), 2)
+        proj_coef = PROJ_COEF/depth
+        #pygame.draw.line(sc, WHITE, pl_pos, (x, y), 2)
+        c = 255/(1 + depth * depth * 0.0001)
+        color = (c,c,c)
+        pygame.draw.rect(sc, color, (ray * SCALE, HALF_HEIGHT - proj_coef//2, SCALE, proj_coef))
 
 
 def player_sight(sc, pl_pos, pl_angle):

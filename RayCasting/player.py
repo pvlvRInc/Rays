@@ -12,15 +12,22 @@ class Player():
         return (self.pos_x, self.pos_y)
 
     def movement(self):
+        cos_a = math.cos(self.angle)
+        sin_a = math.sin(self.angle)
+
         keys = pygame.key.get_pressed()
         if keys[pygame.K_w]:
-            self.pos_y -= SPEED
+            self.pos_x += SPEED * cos_a
+            self.pos_y += SPEED * sin_a
         elif keys[pygame.K_s]:
-            self.pos_y += SPEED
+            self.pos_x -= SPEED * cos_a
+            self.pos_y -= SPEED * sin_a
         if keys[pygame.K_a]:
-            self.pos_x -= SPEED
+            self.pos_x += SPEED * sin_a
+            self.pos_y += -SPEED * cos_a
         elif keys[pygame.K_d]:
-            self.pos_x += SPEED
+            self.pos_x += -SPEED * sin_a
+            self.pos_y += SPEED * cos_a
 
         if keys[pygame.K_LEFT]:
             self.angle -= ANGLE_VELOCITY
